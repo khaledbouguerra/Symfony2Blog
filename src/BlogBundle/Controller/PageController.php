@@ -27,10 +27,7 @@ class PageController extends Controller
             $form->handleRequest($request);
 
             if ($form->isValid()) {
-                // Perform some action, such as sending an email
-
-                // Redirect - This is important to prevent users re-posting
-                // the form if they refresh the page
+                
                 return $this->redirect($this->generateUrl('BlogBundle_contact'));
             }
         }
