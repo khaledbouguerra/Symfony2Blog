@@ -27,7 +27,20 @@ class PageController extends Controller
             $form->handleRequest($request);
 
             if ($form->isValid()) {
-                
+
+
+                    $message = \Swift_Message::newInstance()
+                        ->setSubject('Contact enquiry from symblog')
+                        ->setFrom('khaledbouguerra92@gmail.com')
+                        ->setTo('khaledbouguerra92@gmail.com')
+                        ->setBody($this->renderView('BlogBundle:Page:contactEmail.txt.twig', array('enquiry' => $enquiry)));
+                    $this->get('mailer')->send($message);
+
+                    $this->get('session')->getFlashBag()->set('blogger-notice', 'Your contact enquiry was successfully sent. Thank you!');
+
+
+
+
                 return $this->redirect($this->generateUrl('BlogBundle_contact'));
             }
         }

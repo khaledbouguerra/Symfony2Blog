@@ -9,7 +9,12 @@
     </header>
 
     <p>Want to contact lovin2code?</p>
+   {% for flashMessage in app.session.flashbag.get('blogger-notice') %}
+        <div class="blogger-notice">
+            {{ flashMessage }}
 
+        </div>
+   {% endfor %}
     <form action="{{ path('BlogBundle_contact') }}" method="post" {{ form_enctype(form) }} class="blogger">
         {{ form_errors(form) }}
 
