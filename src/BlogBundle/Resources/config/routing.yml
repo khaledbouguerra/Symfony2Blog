@@ -14,3 +14,9 @@ BlogBundle_contact:
     defaults: { _controller: BlogBundle:Page:contact }
     requirements:
         _method:  GET|POST
+BlogBundle_blog_show:
+    pattern:  /{id}
+    defaults: { _controller: BlogBundle:Blog:show }
+    requirements:
+        _method:  GET
+        id: \d+
